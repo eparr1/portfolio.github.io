@@ -1,60 +1,48 @@
 "use client";
 
 import Image from 'next/image';
-import { useState, useTransition } from 'react';
-import TabButton from './UI/tabButton';
-import { TracingBeam } from './UI/tracing-beam';
-import { Button, MovingBorder } from './UI/moving-border';
 import { Skills } from './Skills';
-import { SparklesCore } from './UI/sparkles';
-
 
 const About = () => {
-  const [isPending, startTransition] = useTransition();
-
   return (
-    <div id="about" className="flex flex-col lg:flex-row justify-between items-center h-1/2 p-4 lg:p-8 gap-8">
-     
-      <div className="hidden lg:block w-full lg:w-1/3 mb-8 lg:mb-0">
-  
-        <Button
-          borderRadius="1.75rem"
-          className="bg-slate-900 text-white border-neutral-200 "
-          containerClassName="h-[550px] w-[400px]"
-          duration={2000}
-        >
-          <div className="p-2 py-3 flex justify-center  items-center  h-full">
-            <Image
-              src="/gradphoto.jpg"
-              alt="graduation photo"
-              width={500}
-              height={500}
-              className=" object-cover rounded-full"
-            />
+    <section id="about" className="mx-auto w-full max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
+      <div className="flex flex-col items-start gap-12 lg:flex-row lg:gap-16">
+        <div className="hidden w-full max-w-xs shrink-0 lg:block">
+          <div className="relative">
+            <div className="absolute -inset-3 -z-10 rounded-[2rem] border border-neutral-200 dark:border-neutral-800" />
+            <div className="aspect-[4/5] w-full overflow-hidden rounded-2xl border border-neutral-200 dark:border-neutral-800">
+              <Image
+                src="/gradphoto.jpg"
+                alt="Emma Parr graduation photo"
+                width={500}
+                height={625}
+                className="h-full w-full object-cover"
+              />
+            </div>
           </div>
-        </Button>
-    
-      </div>
-    {/* about section */}
+        </div>
 
-      <div className="md:grid  gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16 z-20">
-        
-        <div className="mt-4 md:mt-0 text-left flex flex-col h-full w-full text-white">
-          <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
-          <p className="text-base lg:text-lg pb-3 text-[#D8D8D8]">
-            I am a wanna-be developer with a passion for creating
-            interactive and responsive web applications. I have experience
-            working with JavaScript, React, Redux, Node.js, Express, PostgreSQL,
-            Sequelize, HTML, CSS, and Git. I am a quick learner and I am always
-            looking to expand my knowledge and skill set. And I have only gotten started</p>
-          <Skills />
-      </div>
-  
-        
-      </div>
-      
+        <div className="w-full">
+          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-neutral-500 dark:text-neutral-500">
+            About Me
+          </p>
+          <h2 className="font-display text-3xl font-semibold tracking-tight text-neutral-900 sm:text-4xl dark:text-white">
+            From understanding people to building for them
+          </h2>
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-neutral-600 sm:text-lg dark:text-neutral-400">
+            My psychology background shapes how I approach every project: I ask why
+            a user gets stuck before I decide how to fix it. I work across JavaScript,
+            TypeScript, React, Node.js, Express, PostgreSQL and Sequelize, and I care
+            about writing code that&apos;s clear, considered, and genuinely useful, not
+            just functional. I&apos;m a fast learner, and I&apos;m only getting started.
+          </p>
 
-    </div>
+          <div id="skills" className="mt-10">
+            <Skills />
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 

@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import Blog from '../blog/page';
+import { ThemeToggle } from './UI/ThemeToggle';
 
 export const Header: React.FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,67 +31,62 @@ export const Header: React.FC = () => {
     }, []);
 
     return (
-        <header>
-        <div className="flex justify-center items-center w-full h-16 z-20 pt-2 text-2xl font-bold">
+        <header className="sticky top-0 z-30 w-full border-b border-neutral-200/70 bg-white/80 backdrop-blur-md dark:border-neutral-800/70 dark:bg-[#0a0a0b]/80">
+            <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-5 sm:px-8">
+                <Link
+                    href="/"
+                    className="font-display text-lg font-semibold tracking-tight text-neutral-900 dark:text-white"
+                >
+                    EMMA PARR
+                </Link>
 
-            <nav className=" hidden lg:flex md:flex justify-center w-1/3 bg-[#4d4f4d22] py-2 rounded-3xl px-2">
-                 <ul className="flex space-x-10 font-semibold text-lg text-slate-300">
-                     <li className="hover:text-slate-100 hover:underline decoration-indigo-400 underline-offset-8">
-                        <Link href="/">Homepage</Link>
-                    </li>
-                    <li className="hover:text-slate-100 hover:underline decoration-indigo-400 underline-offset-8">
-                         <Link href="/blog">Blog</Link>
-                    </li>
-                    <li className="hover:text-slate-100 hover:underline decoration-indigo-400 underline-offset-8">
-                         <Link href="#">Projects</Link>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+                <nav className="hidden items-center gap-8 text-sm font-medium text-neutral-600 md:flex dark:text-neutral-400">
+                    <Link href="/#about" className="hover-underline-animation hover:text-neutral-900 dark:hover:text-white">
+                        About
+                    </Link>
+                    <Link href="/#skills" className="hover-underline-animation hover:text-neutral-900 dark:hover:text-white">
+                        Skills
+                    </Link>
+                    <Link href="/blog" className="hover-underline-animation hover:text-neutral-900 dark:hover:text-white">
+                        Blog
+                    </Link>
+                    <Link href="/#contact" className="hover-underline-animation hover:text-neutral-900 dark:hover:text-white">
+                        Contact
+                    </Link>
+                </nav>
 
-
-    
-      {/* Left: Image 
-      <div className="flex items-center ml-6">
-        <Image
-          src="/gradphoto.jpg"
-          alt="graduation photo"
-          width={75}
-          height={75} 
-          className="object-cover rounded-full"
-        />
-      </div>
-      */}
-
-      {/* Center: Navigation */}
-      
-        <div className='w-full flex justify-end pt-0'>
-        <div
-                ref={hamburgerRef}
-                onClick={toggleMenu}
-                className="space-y-1 md:hidden w-5 cursor-pointer z-20 mr-5 ml-4 "
-            >
-                <div className="w-8 h-1 bg-indigo-600"></div>
-                <div className="w-8 h-1 bg-indigo-600"></div>
-                <div className="w-8 h-1 bg-indigo-600"></div>
+                <div className="flex items-center gap-3">
+                    <ThemeToggle />
+                    <div
+                        ref={hamburgerRef}
+                        onClick={toggleMenu}
+                        className="flex h-9 w-9 flex-col items-center justify-center gap-1.5 md:hidden"
+                        aria-label="Toggle navigation menu"
+                    >
+                        <span className="h-[1.5px] w-5 bg-neutral-700 dark:bg-neutral-300" />
+                        <span className="h-[1.5px] w-5 bg-neutral-700 dark:bg-neutral-300" />
+                        <span className="h-[1.5px] w-5 bg-neutral-700 dark:bg-neutral-300" />
+                    </div>
+                </div>
             </div>
 
             <ul
                 ref={menuRef}
-                className={`font-normal absolute top-10 left-0 bg-white min-h-[25vh] w-full rounded-b-3xl space-y-6 text-center text-indigo-600 transition-all duration-300 ease-in-out text-xl ${isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
+                className={`fixed inset-x-0 top-16 z-20 flex h-[calc(100vh-4rem)] w-screen flex-col items-center justify-center gap-8 bg-white text-lg font-medium text-neutral-700 transition-opacity duration-200 ease-in-out md:hidden dark:bg-[#0a0a0b] dark:text-neutral-300 ${isMenuOpen ? 'visible opacity-100' : 'invisible opacity-0'}`}
             >
-                <li className="pt-6 active:text-indigo-300 hover:underline decoration-cyan-300 decoration-2 underline-offset-8">
-                        <Link href="/">Homepage</Link>
+                <li>
+                    <Link href="/#about" onClick={() => setIsMenuOpen(false)}>About</Link>
                 </li>
-                <li className="active:text-indigo-300 hover:underline decoration-cyan-300 decoration-2 underline-offset-8">
-                    <Link href='/blog'>Blog</Link>
+                <li>
+                    <Link href="/#skills" onClick={() => setIsMenuOpen(false)}>Skills</Link>
                 </li>
-                <li className="active:text-indigo-300 hover:underline pb-2 decoration-cyan-300 decoration-2 underline-offset-8">
-                    <a href="#">Contact Me</a>
+                <li>
+                    <Link href="/blog" onClick={() => setIsMenuOpen(false)}>Blog</Link>
+                </li>
+                <li>
+                    <Link href="/#contact" onClick={() => setIsMenuOpen(false)}>Contact</Link>
                 </li>
             </ul>
-        </div>
-           
         </header>
     );
 };

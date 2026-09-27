@@ -21,25 +21,22 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       
-      <main className="font-nunito">
-        <div className="min-h-screen bg-[#121212] relative  overflow-hidden">
-          {/*Nav Bar*/}
-          <TracingBeam className="w-full">  
-              <Header/>
+      <main>
+        <div className="relative min-h-screen bg-white text-neutral-900 dark:bg-[#0a0a0b] dark:text-neutral-100">
+          <Header />
 
-          {/*Hero Section*/}
-          <div><Hero /></div>
+          <TracingBeam className="w-full">
+            {/*Hero Section*/}
+            <div><Hero /></div>
 
-          {/*About me*/}
-          <About />
+            {/*About me*/}
+            <About />
 
-          <BlogSection />
+            <BlogSection />
 
-          <Contact />
-
-        </TracingBeam>
+            <Contact />
+          </TracingBeam>
         </div>
-       
       </main>
     </>
   );

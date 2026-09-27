@@ -127,18 +127,15 @@ export function BlogExpands() {
           </div>
         ) : null}
       </AnimatePresence>
-      <ul className="lg:w-2/3 lg:h-52 mx-auto gap-4 ">
+      <ul className="lg:w-2/3 mx-auto space-y-3">
         {cards.map((card, index) => (
           <motion.div
             layoutId={`card-${card.title}-${id}`}
             key={`card-${card.title}-${id}`}
             onClick={() => setActive(card)}
-            className="p-4 text-[#131316]  hover:bg-neutral-800 flex flex-col md:flex-row justify-between items-center rounded-xl cursor-pointer"
+            className="p-4 flex flex-col md:flex-row justify-between items-center rounded-xl cursor-pointer border border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700"
           >
-
-            {/*This changes the unopened part of the expandable cards*/}
-
-            <div className="flex gap-4 flex-col p-4   md:flex-row  ">
+            <div className="flex gap-4 flex-col md:flex-row">
               <motion.div layoutId={`image-${card.title}-${id}`}>
                 <Image
                   width={100}
@@ -151,13 +148,13 @@ export function BlogExpands() {
               <div className="">
                 <motion.h3
                   layoutId={`title-${card.title}-${id}`}
-                  className="font-bold text-neutral-200   text-center md:text-left"
+                  className="font-medium text-neutral-900 dark:text-neutral-100 text-center md:text-left"
                 >
                   {card.title}
                 </motion.h3>
                 <motion.p
                   layoutId={`description-${card.description}-${id}`}
-                  className="text-neutral-400 text-left "
+                  className="text-neutral-500 dark:text-neutral-400 text-left"
                 >
                   {card.description}
                 </motion.p>
@@ -165,7 +162,7 @@ export function BlogExpands() {
             </div>
             <motion.button
               layoutId={`button-${card.title}-${id}`}
-              className="px-4 py-2 text-sm rounded-full font-bold bg-gray-100 hover:bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 hover:text-white text-black mt-4 md:mt-0"
+              className="px-4 py-2 text-sm rounded-full font-semibold bg-neutral-100 hover:bg-neutral-900 hover:text-white text-neutral-900 dark:bg-neutral-800 dark:text-white dark:hover:bg-white dark:hover:text-neutral-900 mt-4 md:mt-0"
               onClick={() => setActive(card)}
             >
               {card.ctaText}

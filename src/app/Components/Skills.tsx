@@ -8,50 +8,48 @@ export const Skills = () => {
         id: string;
         content: JSX.Element;
       }
-      
+
       const TAB_DATA: TabData[] = [
           { title: "Skills", id: "skills", content: (
-              <ul className="list-disc pl-2 text-white text-xl selection:text-2xl ">
+              <ul className="grid grid-cols-2 gap-x-8 gap-y-2 text-base text-neutral-700 sm:text-lg dark:text-neutral-300">
                 <li>Node.js</li>
                 <li>TypeScript</li>
-                <li>HTML & CSSL</li>
+                <li>HTML &amp; CSS</li>
                 <li>Tailwind CSS</li>
                 <li>JavaScript</li>
                 <li>React</li>
               </ul>
             ), },
           { title: "Education", id: "education", content: (
-              <ul className="list-disc pl-2 text-white text-xl ">
-                <li>Masters in Child Clinicl Psychology - Distinction </li>
-                <li>Undergradaution (Hons) degree in Psychology - HIGH 2:1</li>
+              <ul className="space-y-2 text-base text-neutral-700 sm:text-lg dark:text-neutral-300">
+                <li>Masters in Child Clinical Psychology (Distinction)</li>
+                <li>Undergraduate (Hons) degree in Psychology (High 2:1)</li>
               </ul>
             ),},
           { title: "Certifications", id: "certifications", content: (
-              <ul className="list-disc pl-2 text-white text-xl">
-                <li>CodeCademy foundations in web development</li>
-                <li>CodeCademy Responsive Design</li>
-                <li>CodeCademy TypeScript Foundations</li>
-                <li>CodeCademy Front-End Development</li>
-                <li>Getting Python & apps at girlscode</li>
+              <ul className="space-y-2 text-base text-neutral-700 sm:text-lg dark:text-neutral-300">
+                <li>Codecademy: Foundations in Web Development</li>
+                <li>Codecademy: Responsive Design</li>
+                <li>Codecademy: TypeScript Foundations</li>
+                <li>Codecademy: Front-End Development</li>
+                <li>Girls Code: Getting Started with Python &amp; Apps</li>
               </ul>
             ), },
       ];
     const [tab, setTab] = useState<string>("skills");
 
     const handleTabChange = (id: SetStateAction<string>) => {
-        console.log(`Changing tab to: ${id}`); // Debugging statement
         startTransition(() => {
           setTab(id);
         });
       };
 
     return (
-    <div className=" h-[300px]">
-        <div className="flex text-2xl flex-row mt-3 text-white hover:bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+    <div>
+        <div className="flex flex-row gap-1 border-b border-neutral-200 text-base dark:border-neutral-800">
             <TabButton
                 selectTab={() => handleTabChange("skills")}
                 active={tab === "skills"}
-                
             >
                 Skills
             </TabButton>
@@ -68,12 +66,12 @@ export const Skills = () => {
                 Certifications
             </TabButton>
         </div>
-        
-        <div className="mt-4">
+
+        <div className="mt-6 min-h-[140px]">
                 {TAB_DATA.find((t: { id: any} ) => t.id === tab)?.content}
         </div>
 
 </div>
-        
+
     )
 }

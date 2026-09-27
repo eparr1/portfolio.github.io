@@ -9,26 +9,25 @@ interface TabButtonProps {
 
 const variants = {
   default: { width: 0 },
-  active: { width: "calc(100% - 0.75rem)" },
+  active: { width: "100%" },
 };
 
 const TabButton: React.FC<TabButtonProps> = ({ active, selectTab, children }) => {
-  const buttonClasses = active ? "text-white" : "text-[#ADB7BE]";
+  const buttonClasses = active
+    ? "text-neutral-900 dark:text-white"
+    : "text-neutral-400 dark:text-neutral-500";
 
   return (
-    <button 
-      onClick={() => {
-        console.log("Tab clicked"); // Debugging log
-        selectTab();
-      }}
+    <button
+      onClick={selectTab}
       type="button"
-      className={`mr-3 font-semibold hover:text-white ${buttonClasses}`}
+      className={`mr-6 pb-3 font-medium transition-colors hover:text-neutral-900 dark:hover:text-white ${buttonClasses}`}
     >
       {children}
       <motion.div
         animate={active ? "active" : "default"}
         variants={variants}
-        className="h-1 bg-primary-500 mt-2 mr-3 text-purple-600"
+        className="mt-2 h-[2px] bg-neutral-900 dark:bg-white"
       />
     </button>
   );
